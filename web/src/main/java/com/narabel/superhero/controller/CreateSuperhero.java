@@ -1,8 +1,8 @@
 package com.narabel.superhero.controller;
 
 import com.narabel.superhero.domain.Superhero;
-import com.narabel.superhero.domain.SuperheroId;
 import com.narabel.superhero.dto.SuperheroRequestDto;
+import com.narabel.superhero.mapper.SuperheroMapper;
 import com.narabel.superhero.service.CreateSuperheroService;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,11 +18,13 @@ public class CreateSuperhero {
 
 	@Autowired
 	private CreateSuperheroService createSuperheroService;
+	@Autowired
+	private SuperheroMapper superheroMapper;
 
 	@PostMapping("/v1")
 	public ResponseEntity<?> createSuperHero(@RequestBody SuperheroRequestDto superheroRequest) {
 		log.info("Create {}", superheroRequest.toString());
-		Superhero superhero = new Superhero(SuperheroId.generar(), "superman", "super fuerza");
+		Superhero superhero = this.superheroMapper.toDomain(superheroRequest);
 		this.createSuperheroService.save(superhero);
 		return ResponseEntity.status(HttpStatus.CREATED).build();
 	}
