@@ -12,5 +12,13 @@
 
     <artifactId>infra</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.narabel</groupId>
+            <artifactId>core</artifactId>
+            <version>0.0.1</version>
+        </dependency>
+
+    </dependencies>
 
 </project>
