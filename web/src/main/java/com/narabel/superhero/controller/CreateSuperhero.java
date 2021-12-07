@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
+
 @Log4j2
 @RestController
 public class CreateSuperhero {
@@ -22,7 +24,7 @@ public class CreateSuperhero {
 	private SuperheroMapper superheroMapper;
 
 	@PostMapping("/v1")
-	public ResponseEntity<?> createSuperHero(@RequestBody SuperheroRequestDto superheroRequest) {
+	public ResponseEntity<?> createSuperHero(@Valid @RequestBody SuperheroRequestDto superheroRequest) {
 		log.info("Create {}", superheroRequest.toString());
 		Superhero superhero = this.superheroMapper.toDomain(superheroRequest);
 		this.createSuperheroService.save(superhero);
