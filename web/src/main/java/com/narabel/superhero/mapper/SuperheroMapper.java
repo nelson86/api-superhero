@@ -6,7 +6,7 @@ import com.narabel.superhero.dto.SuperheroResponseDto;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
-@Mapper(componentModel = "spring")
+@Mapper
 public interface SuperheroMapper {
 
 	@Mapping(target = "id", expression = "java(SuperheroId.generar())")

@@ -6,7 +6,7 @@ import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
-@Mapper(componentModel = "spring")
+@Mapper
 public interface SuperheroEntityMapper {
 
 	@Mapping(source = "id.value", target = "id")
